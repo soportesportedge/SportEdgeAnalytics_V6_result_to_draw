@@ -52,7 +52,7 @@ async def lifespan(app):
     bundle(REGISTRY['selected_family'])
     yield
 
-app=FastAPI(title='SportEdge V6 result_to_draw',version='1.0.0',lifespan=lifespan)
+app=FastAPI(title='SportEdge V6 result_to_draw',version='1.1.0',lifespan=lifespan)
 
 class Request(BaseModel):
     model_config=ConfigDict(extra='forbid')
@@ -97,13 +97,15 @@ def infer(req):
             return json.loads(previous[1])
     eligible=s['state_developer_name']=='INPLAY_2ND_HALF' and float(s['snapshot_minute'])>=70 and abs(float(s['dif_score']))==1
     raw=probability=None
+    frame=pd.DataFrame([s]);x,_,catalog=build_features(frame,REGISTRY['predictors'])
+    engineering={q['feature']:None if pd.isna(x[q['feature']].iloc[0]) else float(x[q['feature']].iloc[0]) for q in catalog}
     if eligible:
-        frame=pd.DataFrame([s]);x,_,_=build_features(frame,REGISTRY['predictors'])
         with threadpool_limits(limits=1):rr,pp=predict(b,x,frame.snapshot_minute)
         raw,probability=float(rr[0]),float(pp[0])
     threshold=float(b['threshold']);signal=bool(eligible and probability>=threshold)
     approved=bool(REGISTRY['models'][req.family]['production_approved'])
     result={'request_id':rid,'target':'result_to_draw','fixture_id':int(s['id']),'captured_at':s['captured_at'],'created_at':datetime.now(timezone.utc).isoformat(),'family':req.family,'candidate_id':b['config']['candidate_id'],'model_version':b['model_version'],'artifact_sha256':REGISTRY['models'][req.family]['sha256'],'raw_model_score':raw,'probability':probability,'threshold':threshold,'eligible':eligible,'signal':signal,'actionable_signal':bool(approved and signal),'research_only':not approved,'production_approved':approved,'calibration_method':'component_calibrations' if b.get('ensemble') else b['calibrator'].method,'decision_policy':b['policy'],'target_definition':REGISTRY['target_definition']}
+    result.update(engineered_features=engineering,decision_basis='calibrated_probability',probability_status='experimental_prospective_gates_failed',integration_contract_version='result_to_draw_v1.1')
     with connection() as c:
         c.execute('INSERT INTO model_results VALUES (?,?,?,?,?,?,?,?,?,?)',(rid,digest,'result_to_draw',b['model_version'],req.family,int(s['id']),str(s['captured_at']),result['created_at'],json.dumps(s,allow_nan=False),json.dumps(result,allow_nan=False)))
     return result

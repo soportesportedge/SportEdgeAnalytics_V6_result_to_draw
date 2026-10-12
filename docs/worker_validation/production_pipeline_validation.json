@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "historical_technical_test": true,
+  "not_live_signal": true,
+  "duplicate_request_reused": false,
+  "invocation_id": "12b93b52-3f02-4019-8da3-0329551a8557",
+  "fixture_id": 19609657,
+  "snapshot_id": 29225,
+  "captured_at_original": "2026-08-02 01:45:59.963018+00",
+  "probability": 0.9034950443443559,
+  "threshold": 0.4756640432007652,
+  "telegram_chat_id": "-5538403637",
+  "telegram_group": "SportEdge_Latam_Reloaded",
+  "telegram_message_id": "3194",
+  "backend": {
+    "inference_id": 21990,
+    "signal_id": 109682,
+    "outbox_id": 1764,
+    "model_key": "analytics_v6_result_to_draw_20261011",
+    "target": "result_to_draw",
+    "probability": 0.9034950443443559,
+    "actionable_signal": false,
+    "outbox_status": "sent",
+    "telegram_message_id": "3194",
+    "source": "technical_test"
+  },
+  "engineering_columns": 136
+}

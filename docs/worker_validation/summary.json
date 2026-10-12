@@ -1,0 +1,17 @@
+{
+  "integration": "result_to_draw",
+  "deployed": true,
+  "chat": "SportEdge_Latam_Reloaded",
+  "chat_id": "-5538403637",
+  "containers": [
+    "sportedge_v6_result_to_draw",
+    "sportedge_v6_result_to_draw_worker",
+    "sportedge_v6_result_to_draw_telegram"
+  ],
+  "model_key": "analytics_v6_result_to_draw_20261011",
+  "experimental": true,
+  "actionable_signal": false,
+  "isolated_checks": 32,
+  "production_technical_message_id": "3194",
+  "live_signal_observed_during_verification": false
+}

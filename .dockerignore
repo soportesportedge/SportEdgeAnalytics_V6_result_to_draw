@@ -1,6 +1,9 @@
 *
 !Dockerfile
 !Dockerfile.portable
+!Dockerfile.worker
+!Dockerfile.worker.portable
+!requirements-worker.txt
 !requirements-runtime.txt
 !scripts/
 !scripts/model_core.py
@@ -9,3 +12,7 @@
 !service/app.py
 !assets/
 !assets/**
+!worker/
+!worker/**
+!sql/
+!sql/**

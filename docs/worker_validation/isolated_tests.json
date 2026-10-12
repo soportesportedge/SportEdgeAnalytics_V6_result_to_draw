@@ -1,0 +1,136 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "check": "writer_cannot_directly_modify_shared_tables",
+      "pass": true
+    },
+    {
+      "check": "feeds_existing_v6_input_journal",
+      "pass": true
+    },
+    {
+      "check": "feed_deduplication",
+      "pass": true
+    },
+    {
+      "check": "concurrent_claim_only_one_worker",
+      "pass": true
+    },
+    {
+      "check": "backend_commit_precedes_local_outbox",
+      "pass": true
+    },
+    {
+      "check": "retry_preserves_model_request_uuid",
+      "pass": true
+    },
+    {
+      "check": "retry_does_not_duplicate_backend_result",
+      "pass": true
+    },
+    {
+      "check": "job_completes_with_backend_ids",
+      "pass": true
+    },
+    {
+      "check": "one_target_only_in_five_models_table",
+      "pass": true
+    },
+    {
+      "check": "experimental_signal_not_marked_actionable",
+      "pass": true
+    },
+    {
+      "check": "prior_v4_control_unchanged",
+      "pass": true
+    },
+    {
+      "check": "source_values_preserved",
+      "pass": true
+    },
+    {
+      "check": "future_target_rejected",
+      "pass": true
+    },
+    {
+      "check": "missing_predictor_rejected",
+      "pass": true
+    },
+    {
+      "check": "backend_rejects_wrong_target",
+      "pass": true
+    },
+    {
+      "check": "backend_idempotency_conflict_rejected",
+      "pass": true
+    },
+    {
+      "check": "stale_inference_saved_without_notification",
+      "pass": true
+    },
+    {
+      "check": "stale_signal_does_not_reserve_future_alert",
+      "pass": true
+    },
+    {
+      "check": "explicit_historical_technical_test_allowed",
+      "pass": true
+    },
+    {
+      "check": "same_fixture_score_deduplicated",
+      "pass": true
+    },
+    {
+      "check": "changed_score_can_create_new_alert",
+      "pass": true
+    },
+    {
+      "check": "same_minute_older_capture_cannot_replace_newer",
+      "pass": true
+    },
+    {
+      "check": "latest_probability_preserved",
+      "pass": true
+    },
+    {
+      "check": "telegram_unknown_delivery_not_retried",
+      "pass": true
+    },
+    {
+      "check": "telegram_rate_limit_schedules_retry",
+      "pass": true
+    },
+    {
+      "check": "telegram_uses_confirmed_new_group",
+      "pass": true
+    },
+    {
+      "check": "telegram_historical_test_clearly_labeled",
+      "pass": true
+    },
+    {
+      "check": "telegram_success_mirrored_to_legacy_outbox",
+      "pass": true
+    },
+    {
+      "check": "legacy_outbox_sent_only",
+      "pass": true
+    },
+    {
+      "check": "delivery_mirror_idempotent",
+      "pass": true
+    },
+    {
+      "check": "stale_outbox_suppressed",
+      "pass": true
+    },
+    {
+      "check": "worker_heartbeat_recorded",
+      "pass": true
+    }
+  ],
+  "production_database_modified": false,
+  "telegram_network_calls": 0,
+  "test_database_container": "sportedge_draw_isolated_test_db"
+}

@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "model_api_http_real": true,
+  "telegram_calls_simulated": true,
+  "production_database_modified": false,
+  "request_id": "d7d31692-2b0b-4eb4-a95f-a37d7a838ad1",
+  "fixture_id": 19609657,
+  "snapshot_id": 29225,
+  "probability": 0.9034950443443559,
+  "threshold": 0.4756640432007652,
+  "engineering_columns": 136,
+  "backend_inference_id": 13,
+  "backend_signal_id": 12,
+  "telegram_preview": "<b>🧪 PRUEBA TÉCNICA V6 · RESULT_TO_DRAW</b>\n\nEjemplo histórico para verificar el circuito. No es una señal en vivo.\n⚽ <b>Posible igualación y empate al cierre</b>\n🏟️ <b>Inter Miami</b> 2 - 1 <b>Columbus Crew</b>\n⏱️ Minuto <b>70</b>\n\n📊 Estimación experimental: <b>90.3%</b>\nUmbral del modelo: 47.6%\n\n<i>Modelo result_to_draw · investigación.</i>\nPrueba independiente: precisión 30,2% y recall 11,0%. No cumple los requisitos de producción.",
+  "actionable_signal": false
+}
