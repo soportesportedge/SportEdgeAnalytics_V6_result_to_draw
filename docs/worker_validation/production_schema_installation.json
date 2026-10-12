@@ -1,0 +1,13 @@
+{
+  "installed_at": "2026-10-12T17:53:05.004202+00:00",
+  "v6_schema": "v6_result_to_draw",
+  "backend_schema": "analytics_v6_result_to_draw",
+  "legacy_tables": [
+    "adjusted_analytic_inferences",
+    "adjusted_analytic_signals",
+    "telegram_alert_outbox"
+  ],
+  "legacy_schema_altered": false,
+  "writer_direct_table_access": false,
+  "telegram_chat_id": "-5538403637"
+}

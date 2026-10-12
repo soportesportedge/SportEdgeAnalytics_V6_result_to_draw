@@ -1,0 +1,7 @@
+FROM sportedge-integration-v6:1.2.0
+WORKDIR /opt/draw_worker
+COPY worker ./worker
+COPY assets/manifest.json ./assets/manifest.json
+COPY sql ./sql
+ENV PYTHONPATH=/opt/draw_worker PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1
+CMD ["python","-m","worker.inference"]

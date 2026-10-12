@@ -2,7 +2,7 @@ name: sportedge-v6-result-to-draw
 services:
   result-to-draw:
     build: .
-    image: sportedge-result-to-draw-v6:1.0.0
+    image: sportedge-result-to-draw-v6:1.1.0
     container_name: sportedge_v6_result_to_draw
     init: true
     restart: unless-stopped
@@ -29,6 +29,88 @@ services:
     logging:
       driver: json-file
       options: {max-size: "10m", max-file: "3"}
+  draw-inference-worker:
+    build:
+      context: .
+      dockerfile: Dockerfile.worker
+    image: sportedge-result-to-draw-worker-v6:1.0.0
+    container_name: sportedge_v6_result_to_draw_worker
+    init: true
+    restart: unless-stopped
+    cpus: 0.25
+    mem_limit: 192m
+    pids_limit: 64
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    tmpfs: ["/tmp:size=16m,mode=1777"]
+    environment: &draw-worker-environment
+      DRAW_WORKER_ENABLED: "true"
+      DRAW_MODEL_URL: http://result-to-draw:8788
+      DRAW_MODEL_API_KEY_FILE: /run/secrets/model_api_key
+      DRAW_V6_DATABASE_URL: postgresql://sportedge_v6_draw@v6-db:5432/sportedge_v6
+      DRAW_V6_DB_PASSWORD_FILE: /run/secrets/draw_v6_db_password
+      DRAW_BACKEND_DATABASE_URL: postgresql://sportedge_draw_writer@host.docker.internal:5401/sportedge_v2
+      DRAW_BACKEND_DB_PASSWORD_FILE: /run/secrets/draw_backend_db_password
+      DRAW_TELEGRAM_CHAT_ID_FILE: /run/secrets/draw_telegram_chat_id
+      DRAW_FEED_BATCH_SIZE: "10"
+      DRAW_FEED_POLL_SECONDS: "5"
+      DRAW_MAX_AGE_SECONDS: "300"
+    secrets: [model_api_key,draw_v6_db_password,draw_backend_db_password,draw_telegram_chat_id]
+    networks: [sportedge_v6]
+    extra_hosts: ["host.docker.internal:host-gateway"]
+    depends_on:
+      result-to-draw: {condition: service_healthy}
+    labels:
+      com.sportedge.integration: analytics-v6
+      com.sportedge.target: result_to_draw
+      com.sportedge.component: inference-worker
+    healthcheck:
+      test: [CMD,python,-m,worker.health,inference]
+      interval: 30s
+      timeout: 10s
+      start_period: 30s
+      retries: 3
+    logging:
+      driver: json-file
+      options: {max-size: "10m", max-file: "3"}
+  draw-telegram-worker:
+    build:
+      context: .
+      dockerfile: Dockerfile.worker
+    image: sportedge-result-to-draw-worker-v6:1.0.0
+    container_name: sportedge_v6_result_to_draw_telegram
+    command: [python,-m,worker.telegram]
+    init: true
+    restart: unless-stopped
+    cpus: 0.15
+    mem_limit: 128m
+    pids_limit: 64
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    tmpfs: ["/tmp:size=16m,mode=1777"]
+    environment:
+      <<: *draw-worker-environment
+      DRAW_TELEGRAM_ENABLED: "true"
+      DRAW_TELEGRAM_BOT_TOKEN_FILE: /run/secrets/draw_telegram_bot_token
+      DRAW_V6_POOL_SIZE: "1"
+    secrets: [draw_v6_db_password,draw_backend_db_password,draw_telegram_bot_token,draw_telegram_chat_id]
+    networks: [sportedge_v6]
+    extra_hosts: ["host.docker.internal:host-gateway"]
+    labels:
+      com.sportedge.integration: analytics-v6
+      com.sportedge.target: result_to_draw
+      com.sportedge.component: telegram-worker
+    healthcheck:
+      test: [CMD,python,-m,worker.health,telegram]
+      interval: 30s
+      timeout: 10s
+      start_period: 30s
+      retries: 3
+    logging:
+      driver: json-file
+      options: {max-size: "10m", max-file: "3"}
 networks:
   sportedge_v6:
     external: true
@@ -39,3 +121,11 @@ volumes:
 secrets:
   model_api_key:
     file: ./secrets/model_api_key.txt
+  draw_v6_db_password:
+    file: ./secrets/draw_v6_db_password.txt
+  draw_backend_db_password:
+    file: ./secrets/draw_backend_db_password.txt
+  draw_telegram_bot_token:
+    file: C:/Proyectos/SportEdgeAnalytics_V6_Home_to_Increase/deployments/SportEdgeIntegracionAnalytics_V6/secrets/telegram_bot_token.txt
+  draw_telegram_chat_id:
+    file: C:/Proyectos/SportEdgeAnalytics_V6_Home_to_Increase/deployments/SportEdgeIntegracionAnalytics_V6/secrets/telegram_chat_id.txt

@@ -158,8 +158,8 @@ def rank(m):
 
 def predict(b,x,minute):
     if b.get('ensemble'):
-        parts=[predict(q,x,minute) for q in b['components']]
-        return sum(w*q[0] for w,q in zip(b['weights'],parts)),sum(w*q[1] for w,q in zip(b['weights'],parts))
+        parts=[(w,predict(q,x,minute)) for w,q in zip(b['weights'],b['components']) if w>0]
+        return sum(w*q[0] for w,q in parts),sum(w*q[1] for w,q in parts)
     matrix=b['transform'].transform(x[b['stage_columns']])
     raw=b['estimator'].predict_proba(matrix)[:,1]
     return raw,b['calibrator'].predict(raw,minute)

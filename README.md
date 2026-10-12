@@ -24,7 +24,7 @@ Consulte [métricas](docs/metrics_comparison.csv), [selección congelada](docs/s
 
 ## Servicio desplegado
 
-Contenedor `sportedge_v6_result_to_draw`, imagen `sportedge-result-to-draw-v6:1.0.0`, proyecto Compose `sportedge-v6-result-to-draw`, red externa existente `sportedge_v6`. Puerto del host `127.0.0.1:8792`; URL dentro de la red V6 `http://result-to-draw:8788`.
+Contenedor `sportedge_v6_result_to_draw`, imagen `sportedge-result-to-draw-v6:1.1.0`, proyecto Compose `sportedge-v6-result-to-draw`, red externa existente `sportedge_v6`. Puerto del host `127.0.0.1:8792`; URL dentro de la red V6 `http://result-to-draw:8788`.
 
 ```text
 GET  /health/ready
@@ -35,9 +35,11 @@ GET  /v1/models/result_to_draw/results/{request_id}
 
 Las rutas de inferencia, contrato y resultados requieren `Authorization: Bearer <clave>`. El [ejemplo](docs/example_request.json) muestra el cuerpo con `request_id` y `snapshot`. `family` es opcional. Se requieren todos los predictores; valores ausentes del proveedor se envían como `null`, no como campos omitidos. Las etiquetas futuras deben omitirse. Se valida la consistencia del marcador y las fechas con zona horaria.
 
-La respuesta identifica target, versión y SHA-256; separa `raw_model_score`, `probability`, `threshold`, `eligible`, `signal` y `actionable_signal`. Cada llamada válida se guarda, incluso fuera del horizonte elegible. Un `request_id` repetido con la misma entrada devuelve el resultado previo; con contenido diferente responde 409. Use el mismo UUID persistido en el backend cuando reintente una llamada.
+La respuesta identifica target, versión y SHA-256; separa `raw_model_score`, `probability`, `threshold`, `eligible`, `signal` y `actionable_signal`. Incluye las 136 ingenierías utilizadas por el contrato de integración. Cada llamada válida se guarda, incluso fuera del horizonte elegible. Un `request_id` repetido con la misma entrada devuelve el resultado previo; con contenido diferente responde 409. Use el mismo UUID persistido en el backend cuando reintente una llamada.
 
-SQLite WAL con sincronización FULL se guarda en el volumen propio `sportedge_v6_result_to_draw_results`. Se verificó su durabilidad tras reiniciar el contenedor. La clave local se guarda en `secrets/model_api_key.txt` y no se versiona. Configure `RESULT_TO_DRAW_URL` y `RESULT_TO_DRAW_API_KEY_FILE` para usar [el cliente Python](scripts/backend_client.py). Se comprobó una invocación real desde `sportedge-v6-api-1` por la red compartida. Los workers actuales permanecen específicos de home_score_to_increase; esta entrega no altera su target ni activa notificaciones.
+SQLite WAL con sincronización FULL se guarda en el volumen propio `sportedge_v6_result_to_draw_results`. Se verificó su durabilidad tras reiniciar el contenedor. La clave local se guarda en `secrets/model_api_key.txt` y no se versiona. Configure `RESULT_TO_DRAW_URL` y `RESULT_TO_DRAW_API_KEY_FILE` para usar [el cliente Python](scripts/backend_client.py).
+
+El 12/10/2026 se añadió [un worker específico](docs/WORKER_INTEGRATION.md), con persistencia en las tablas existentes de Analytics V3 y Five Models y publicación experimental autorizada en SportEdge_Latam_Reloaded. Reutiliza el collector V6, mantiene su propia cola y no modifica el target del worker home. Se verificó el circuito real con un ejemplo histórico identificado como prueba técnica; Telegram confirmó el mensaje 3194.
 
 ```powershell
 docker compose build
@@ -46,7 +48,7 @@ docker compose ps
 docker compose stop
 ```
 
-El Dockerfile principal reutiliza el runtime V6 existente, cuyas versiones se verificaron contra el entorno de entrenamiento. Para otra instalación, use `docker build -f Dockerfile.portable -t sportedge-result-to-draw-v6:1.0.0 .` y cree la red `sportedge_v6` antes de iniciar Compose. Genere una clave con `secrets.token_urlsafe(48)` en el archivo indicado. No copie claves de otra instalación.
+El Dockerfile principal reutiliza el runtime V6 existente, cuyas versiones se verificaron contra el entorno de entrenamiento. Para otra instalación, use `docker build -f Dockerfile.portable -t sportedge-result-to-draw-v6:1.1.0 .` y `Dockerfile.worker.portable`, y cree la red `sportedge_v6` antes de iniciar Compose. Configure sus propios secretos y monte en sólo lectura el token y chat autorizados; las rutas de Compose corresponden a esta instalación local. `scripts/setup_worker.py --mode production` instala schemas y roles limitados después de comprobar las pruebas aisladas. Genere una clave API con `secrets.token_urlsafe(48)` en el archivo indicado.
 
 ## Reproducción de la investigación
 
