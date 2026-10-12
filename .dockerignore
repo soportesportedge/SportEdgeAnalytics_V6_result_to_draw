@@ -1,0 +1,11 @@
+*
+!Dockerfile
+!Dockerfile.portable
+!requirements-runtime.txt
+!scripts/
+!scripts/model_core.py
+!scripts/feature_engineering.py
+!service/
+!service/app.py
+!assets/
+!assets/**

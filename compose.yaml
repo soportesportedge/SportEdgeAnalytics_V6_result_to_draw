@@ -1,0 +1,41 @@
+name: sportedge-v6-result-to-draw
+services:
+  result-to-draw:
+    build: .
+    image: sportedge-result-to-draw-v6:1.0.0
+    container_name: sportedge_v6_result_to_draw
+    init: true
+    restart: unless-stopped
+    cpus: 1.0
+    mem_limit: 1g
+    pids_limit: 128
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    tmpfs: ["/tmp:size=64m,mode=1777"]
+    environment:
+      MODEL_API_KEY_FILE: /run/secrets/model_api_key
+    secrets: [model_api_key]
+    volumes: [result_to_draw_data:/data]
+    ports: ["127.0.0.1:8792:8788"]
+    networks:
+      sportedge_v6:
+        aliases: [result-to-draw]
+    healthcheck:
+      test: [CMD,python,-c,"import urllib.request; urllib.request.urlopen('http://127.0.0.1:8788/health/ready',timeout=3)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+    logging:
+      driver: json-file
+      options: {max-size: "10m", max-file: "3"}
+networks:
+  sportedge_v6:
+    external: true
+    name: sportedge_v6
+volumes:
+  result_to_draw_data:
+    name: sportedge_v6_result_to_draw_results
+secrets:
+  model_api_key:
+    file: ./secrets/model_api_key.txt

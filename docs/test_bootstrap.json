@@ -1,0 +1,90 @@
+{
+  "logistic": {
+    "method": "percentile bootstrap resampling complete fixtures, 1000 replicates",
+    "precision_ci95": [
+      0.021739130434782608,
+      0.7777777777777778
+    ],
+    "recall_ci95": [
+      0.0031815481407896536,
+      0.20538903061224487
+    ]
+  },
+  "extra_trees": {
+    "method": "percentile bootstrap resampling complete fixtures, 1000 replicates",
+    "precision_ci95": [
+      0.05623771699967246,
+      0.5156654094827586
+    ],
+    "recall_ci95": [
+      0.012935289501164232,
+      0.15641156462585035
+    ]
+  },
+  "random_forest": {
+    "method": "percentile bootstrap resampling complete fixtures, 1000 replicates",
+    "precision_ci95": [
+      0.0,
+      0.5144032549728751
+    ],
+    "recall_ci95": [
+      0.0,
+      0.11341601315828119
+    ]
+  },
+  "hist_gradient_boosting": {
+    "method": "percentile bootstrap resampling complete fixtures, 1000 replicates",
+    "precision_ci95": [
+      0.023255813953488372,
+      0.5928794642857143
+    ],
+    "recall_ci95": [
+      0.007042253521126761,
+      0.2545051175958188
+    ]
+  },
+  "gradient_boosting": {
+    "method": "percentile bootstrap resampling complete fixtures, 1000 replicates",
+    "precision_ci95": [
+      0.042994805904866054,
+      0.5535782967032967
+    ],
+    "recall_ci95": [
+      0.013111560570576964,
+      0.23077427821522312
+    ]
+  },
+  "xgboost": {
+    "method": "percentile bootstrap resampling complete fixtures, 1000 replicates",
+    "precision_ci95": [
+      0.05256578947368421,
+      0.7011802134646963
+    ],
+    "recall_ci95": [
+      0.012726192563158614,
+      0.26502976190476185
+    ]
+  },
+  "catboost": {
+    "method": "percentile bootstrap resampling complete fixtures, 1000 replicates",
+    "precision_ci95": [
+      0.0,
+      0.22238095238095223
+    ],
+    "recall_ci95": [
+      0.0,
+      0.04456928063290222
+    ]
+  },
+  "soft_voting": {
+    "method": "percentile bootstrap resampling complete fixtures, 1000 replicates",
+    "precision_ci95": [
+      0.012974837662337663,
+      0.6039772727272726
+    ],
+    "recall_ci95": [
+      0.0035211267605633804,
+      0.25206504065040647
+    ]
+  }
+}

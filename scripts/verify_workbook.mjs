@@ -1,0 +1,20 @@
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import {SpreadsheetFile,FileBlob} from '@oai/artifact-tool';
+const out=path.join(process.cwd(),'outputs','v6_result_to_draw_20261011');
+const wb=await SpreadsheetFile.importXlsx(await FileBlob.load(path.join(out,'Resultados_V6_result_to_draw.xlsx')));
+const s=wb.worksheets.getItem('Resumen');
+const saved=s.getRange('B6:C6').values;
+const checks=[];
+function check(name,condition){checks.push({check:name,pass:!!condition});if(!condition)throw new Error(name);}
+check('saved_precision_matches_metrics',Math.abs(s.getRange('B6').values[0][0]-.47297297297297297)<1e-10);
+check('saved_formula_result_no',s.getRange('J6').values[0][0]==='No');
+s.getRange('B6:C6').values=[[.5,.25]];wb.recalculate();
+check('strict_gate_boundary_no',s.getRange('J6').values[0][0]==='No');
+s.getRange('B6:C6').values=[[.5001,.2501]];wb.recalculate();
+check('gate_formula_recalculates_yes',s.getRange('J6').values[0][0]==='Sí');
+s.getRange('B6:C6').values=saved;wb.recalculate();
+check('restored_original_result',s.getRange('J6').values[0][0]==='No');
+check('chart_bindings_present',s.charts.items.length===1&&s.charts.items[0].series.items.length===2);
+await fs.writeFile(path.join(out,'workbook_validation.json'),JSON.stringify({passed:true,checks,engine:'artifact-tool; disposable import, exported file unchanged'},null,2));
+console.log('PASS workbook saved values, strict gates, recalculation and chart bindings');

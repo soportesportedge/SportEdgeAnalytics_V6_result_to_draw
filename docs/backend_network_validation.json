@@ -1,0 +1,27 @@
+{
+  "caller_container": "sportedge-v6-api-1",
+  "url": "http://result-to-draw:8788/v1/models/result_to_draw/predict",
+  "pass": true,
+  "result": {
+    "request_id": "c4e7c2b9-2db9-494f-919d-175f76d3fd52",
+    "target": "result_to_draw",
+    "fixture_id": 19609489,
+    "captured_at": "2026-09-24 03:07:31.744444+00",
+    "created_at": "2026-10-11T18:59:54.485183+00:00",
+    "family": "soft_voting",
+    "candidate_id": "soft_voting_054",
+    "model_version": "v6_result_to_draw_20261011",
+    "artifact_sha256": "a122ae4dbf9368f0a4bcd4a8da79477594a6c3e02d40675130f80ec024da3419",
+    "raw_model_score": 0.08273465415131469,
+    "probability": 0.08273465415131469,
+    "threshold": 0.4756640432007652,
+    "eligible": true,
+    "signal": false,
+    "actionable_signal": false,
+    "research_only": true,
+    "production_approved": false,
+    "calibration_method": "component_calibrations",
+    "decision_policy": "gates",
+    "target_definition": "Future surviving equalization from abs(dif_score)=1 and draw at observed closure within same (id,market_id); closure is FT or last snapshot only if group reaches minute>=90. Current data contain no official FT captures. Pending cases remain null."
+  }
+}

@@ -1,0 +1,271 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "check": "23600_original_rows_preserved",
+      "pass": true
+    },
+    {
+      "check": "all_222_source_fields_equal_and_order_preserved",
+      "pass": true
+    },
+    {
+      "check": "target_never_predictor",
+      "pass": true
+    },
+    {
+      "check": "183_unique_SI_predictors",
+      "pass": true
+    },
+    {
+      "check": "pending_preserved",
+      "pass": true
+    },
+    {
+      "check": "fixture_disjoint_train_calibration",
+      "pass": true
+    },
+    {
+      "check": "labels_available_before_calibration",
+      "pass": true
+    },
+    {
+      "check": "fixture_disjoint_calibration_validation",
+      "pass": true
+    },
+    {
+      "check": "labels_available_before_validation",
+      "pass": true
+    },
+    {
+      "check": "fixture_disjoint_validation_test",
+      "pass": true
+    },
+    {
+      "check": "labels_available_before_test",
+      "pass": true
+    },
+    {
+      "check": "200_versions_logistic",
+      "pass": true
+    },
+    {
+      "check": "200_versions_extra_trees",
+      "pass": true
+    },
+    {
+      "check": "200_versions_random_forest",
+      "pass": true
+    },
+    {
+      "check": "200_versions_hist_gradient_boosting",
+      "pass": true
+    },
+    {
+      "check": "200_versions_gradient_boosting",
+      "pass": true
+    },
+    {
+      "check": "200_versions_xgboost",
+      "pass": true
+    },
+    {
+      "check": "200_versions_catboost",
+      "pass": true
+    },
+    {
+      "check": "fold1_past_only",
+      "pass": true
+    },
+    {
+      "check": "fold1_fixtures_disjoint",
+      "pass": true
+    },
+    {
+      "check": "fold2_past_only",
+      "pass": true
+    },
+    {
+      "check": "fold2_fixtures_disjoint",
+      "pass": true
+    },
+    {
+      "check": "fold3_past_only",
+      "pass": true
+    },
+    {
+      "check": "fold3_fixtures_disjoint",
+      "pass": true
+    },
+    {
+      "check": "fold4_past_only",
+      "pass": true
+    },
+    {
+      "check": "fold4_fixtures_disjoint",
+      "pass": true
+    },
+    {
+      "check": "fold5_past_only",
+      "pass": true
+    },
+    {
+      "check": "fold5_fixtures_disjoint",
+      "pass": true
+    },
+    {
+      "check": "selected_family_frozen",
+      "pass": true
+    },
+    {
+      "check": "frozen_selection_hash",
+      "pass": true
+    },
+    {
+      "check": "model_sha256_logistic",
+      "pass": true
+    },
+    {
+      "check": "replay_parity_logistic",
+      "pass": true
+    },
+    {
+      "check": "all_models_research_only_logistic",
+      "pass": true
+    },
+    {
+      "check": "model_sha256_extra_trees",
+      "pass": true
+    },
+    {
+      "check": "replay_parity_extra_trees",
+      "pass": true
+    },
+    {
+      "check": "all_models_research_only_extra_trees",
+      "pass": true
+    },
+    {
+      "check": "model_sha256_random_forest",
+      "pass": true
+    },
+    {
+      "check": "replay_parity_random_forest",
+      "pass": true
+    },
+    {
+      "check": "all_models_research_only_random_forest",
+      "pass": true
+    },
+    {
+      "check": "model_sha256_hist_gradient_boosting",
+      "pass": true
+    },
+    {
+      "check": "replay_parity_hist_gradient_boosting",
+      "pass": true
+    },
+    {
+      "check": "all_models_research_only_hist_gradient_boosting",
+      "pass": true
+    },
+    {
+      "check": "model_sha256_gradient_boosting",
+      "pass": true
+    },
+    {
+      "check": "replay_parity_gradient_boosting",
+      "pass": true
+    },
+    {
+      "check": "all_models_research_only_gradient_boosting",
+      "pass": true
+    },
+    {
+      "check": "model_sha256_xgboost",
+      "pass": true
+    },
+    {
+      "check": "replay_parity_xgboost",
+      "pass": true
+    },
+    {
+      "check": "all_models_research_only_xgboost",
+      "pass": true
+    },
+    {
+      "check": "model_sha256_catboost",
+      "pass": true
+    },
+    {
+      "check": "replay_parity_catboost",
+      "pass": true
+    },
+    {
+      "check": "all_models_research_only_catboost",
+      "pass": true
+    },
+    {
+      "check": "model_sha256_soft_voting",
+      "pass": true
+    },
+    {
+      "check": "replay_parity_soft_voting",
+      "pass": true
+    },
+    {
+      "check": "all_models_research_only_soft_voting",
+      "pass": true
+    },
+    {
+      "check": "xlsx_zip_integrity",
+      "pass": true
+    },
+    {
+      "check": "xlsx_has_10_sheets",
+      "pass": true
+    },
+    {
+      "check": "html_exists",
+      "pass": true
+    },
+    {
+      "check": "http_23_checks",
+      "pass": true
+    },
+    {
+      "check": "backend_container_invocation",
+      "pass": true
+    },
+    {
+      "check": "durability_after_restart",
+      "pass": true
+    },
+    {
+      "check": "unchanged_input_Clusters_V2.xlsx",
+      "pass": true
+    },
+    {
+      "check": "unchanged_input_Cuadro_Variables_Modelos_V4.1_vs_V4_20260829.xlsm",
+      "pass": true
+    },
+    {
+      "check": "unchanged_input_Descripcion_variables_actualizada_V2_analitico.xlsx",
+      "pass": true
+    },
+    {
+      "check": "unchanged_input_Informe_Seleccion_Variables_Ingenieria_y_Familias_Algoritmos_v20260827_vs_v20260828.docx",
+      "pass": true
+    },
+    {
+      "check": "unchanged_input_Promp creci\u00f3n de modelos.docx",
+      "pass": true
+    },
+    {
+      "check": "unchanged_input_Match_centre_base_modelos_V2_etiquetada_result_to_draw.csv",
+      "pass": true
+    }
+  ],
+  "rows": 23600,
+  "sha256_backtesting": "db2ca6ea3b4bc9a253b775a02e0f81463a52467561a1792ebafa446658025d1d"
+}

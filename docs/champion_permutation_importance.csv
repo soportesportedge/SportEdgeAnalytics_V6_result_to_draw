@@ -1,0 +1,16 @@
+feature,model,repeats,scope,ap_drop_mean,ap_drop_sd
+eng_trailing_advantage_dangerous_attacks,soft_voting,10,frozen-model validation diagnostic only; correlated derived columns remain unchanged,0.03876459150664381,0.0042883040113038656
+eng_trailing_advantage_shots_total,soft_voting,10,frozen-model validation diagnostic only; correlated derived columns remain unchanged,0.008223190378444784,0.006357420465221602
+snapshot_minute,soft_voting,10,frozen-model validation diagnostic only; correlated derived columns remain unchanged,-0.0009615015631339374,0.0014706602329309882
+eng_trailing_dangerous_attacks,soft_voting,10,frozen-model validation diagnostic only; correlated derived columns remain unchanged,0.017083709146729426,0.0028385096629593414
+goals_for_home,soft_voting,10,frozen-model validation diagnostic only; correlated derived columns remain unchanged,0.011469970566463806,0.00377292374101378
+eng_trailing_advantage_corners,soft_voting,10,frozen-model validation diagnostic only; correlated derived columns remain unchanged,0.11383050866929856,0.00990445738474976
+eng_trailing_pressure,soft_voting,10,frozen-model validation diagnostic only; correlated derived columns remain unchanged,0.03394652506470279,0.005154182757298643
+home_substitutions,soft_voting,10,frozen-model validation diagnostic only; correlated derived columns remain unchanged,0.01613921571581901,0.007026698284550034
+minutes_to_90,soft_voting,10,frozen-model validation diagnostic only; correlated derived columns remain unchanged,0.03408921733078094,0.01677625108598933
+games_played_away,soft_voting,10,frozen-model validation diagnostic only; correlated derived columns remain unchanged,0.02153044018856634,0.005484405472255277
+goals_against_home,soft_voting,10,frozen-model validation diagnostic only; correlated derived columns remain unchanged,0.043007379615611324,0.006919666638554219
+eng_goals_against_per_game_diff,soft_voting,10,frozen-model validation diagnostic only; correlated derived columns remain unchanged,0.031013252863623702,0.014691309916000924
+away_fouls,soft_voting,10,frozen-model validation diagnostic only; correlated derived columns remain unchanged,0.021946671182010276,0.010874472350097331
+eng_trailing_advantage_shots_on_target,soft_voting,10,frozen-model validation diagnostic only; correlated derived columns remain unchanged,0.032151295397518986,0.003582153669358761
+eng_points_per_game_diff,soft_voting,10,frozen-model validation diagnostic only; correlated derived columns remain unchanged,0.01997249680309756,0.006381530254243166

@@ -1,0 +1,77 @@
+{
+  "selected_family": "soft_voting",
+  "selection_basis": "main validation plus nested development backtesting; independent test unopened",
+  "selected_config": {
+    "candidate_id": "soft_voting_054",
+    "family": "soft_voting",
+    "component_ids": [
+      "logistic_023_identity",
+      "extra_trees_003_sigmoid",
+      "random_forest_021_sigmoid",
+      "hist_gradient_boosting_006_identity",
+      "gradient_boosting_035_identity",
+      "xgboost_032_sigmoid",
+      "catboost_036_identity"
+    ]
+  },
+  "main_validation": {
+    "rows": 1511,
+    "positives": 217,
+    "tp": 57.0,
+    "fp": 17.0,
+    "fn": 160.0,
+    "tn": 1277.0,
+    "precision": 0.7702702702702703,
+    "recall": 0.2626728110599078,
+    "f1": 0.3917525773195876,
+    "gates_pass": true,
+    "threshold": 0.4756640432007652,
+    "ap": 0.36537347766130923,
+    "roc_auc": 0.5878389447218285,
+    "brier": 0.11699507424830365,
+    "log_loss": 0.5086605410147601,
+    "ece_10": 0.10353746930274077,
+    "probability_mean": 0.10071646608322496,
+    "probability_signal_mean": 0.6279638274321372,
+    "signal_rate": 0.04897418927862343,
+    "prevalence": 0.14361350099272005
+  },
+  "nested_backtesting": {
+    "rows": 4582,
+    "positives": 800,
+    "tp": 129.0,
+    "fp": 203.0,
+    "fn": 671.0,
+    "tn": 3579.0,
+    "precision": 0.3885542168674699,
+    "recall": 0.16125,
+    "f1": 0.22791519434628976,
+    "gates_pass": false,
+    "threshold": null,
+    "ap": 0.25291553651523374,
+    "roc_auc": 0.6549395161290323,
+    "brier": 0.14952301789681,
+    "log_loss": 0.5006526574525949,
+    "ece_10": 0.0911583865084097,
+    "probability_mean": 0.11066340259907889,
+    "probability_signal_mean": 0.3081381452027876,
+    "signal_rate": 0.07245744216499345,
+    "prevalence": 0.17459624618070713
+  },
+  "frozen_at": "2026-10-11T18:56:59.260868+00:00",
+  "gates": {
+    "precision_strictly_gt": 0.5,
+    "recall_strictly_gt": 0.25
+  },
+  "precision_priority": "Never lower precision to optimize F1. Recall relaxation explicitly flagged.",
+  "candidate_versions": {
+    "logistic": 200,
+    "extra_trees": 200,
+    "random_forest": 200,
+    "hist_gradient_boosting": 200,
+    "gradient_boosting": 200,
+    "xgboost": 200,
+    "catboost": 200
+  },
+  "ensemble_versions": 64
+}

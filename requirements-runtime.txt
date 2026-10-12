@@ -1,0 +1,11 @@
+numpy==2.4.6
+pandas==3.0.3
+scipy==1.17.1
+scikit-learn==1.8.0
+xgboost==3.2.0
+catboost==1.2.10
+joblib==1.5.3
+fastapi==0.136.1
+uvicorn==0.47.0
+httpx==0.28.1
+threadpoolctl==3.6.0

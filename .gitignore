@@ -1,0 +1,11 @@
+.venv*/
+node_modules/
+__pycache__/
+.pytest_cache/
+desktop.ini
+outputs/
+audit/source_inspection.json
+audit/labeling_validation.json
+*.sqlite*
+secrets/
+*.log

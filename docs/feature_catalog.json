@@ -1,0 +1,818 @@
+[
+  {
+    "feature": "eng_home_shots_total_per_min",
+    "cycle": 1,
+    "formula": "home_shots_total/max(snapshot_minute,1)",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_home_shots_on_target_per_min",
+    "cycle": 1,
+    "formula": "home_shots_on_target/max(snapshot_minute,1)",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_home_dangerous_attacks_per_min",
+    "cycle": 1,
+    "formula": "home_dangerous_attacks/max(snapshot_minute,1)",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_home_attacks_per_min",
+    "cycle": 1,
+    "formula": "home_attacks/max(snapshot_minute,1)",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_home_corners_per_min",
+    "cycle": 1,
+    "formula": "home_corners/max(snapshot_minute,1)",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_home_shot_accuracy",
+    "cycle": 1,
+    "formula": "home_shots_on_target/(home_shots_total+1)",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_home_pressure",
+    "cycle": 1,
+    "formula": "0.5*home_shots_on_target+0.03*home_dangerous_attacks+0.12*home_corners",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_home_attack_efficiency",
+    "cycle": 1,
+    "formula": "home_shots_on_target/(home_dangerous_attacks+1)",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_away_shots_total_per_min",
+    "cycle": 1,
+    "formula": "away_shots_total/max(snapshot_minute,1)",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_away_shots_on_target_per_min",
+    "cycle": 1,
+    "formula": "away_shots_on_target/max(snapshot_minute,1)",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_away_dangerous_attacks_per_min",
+    "cycle": 1,
+    "formula": "away_dangerous_attacks/max(snapshot_minute,1)",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_away_attacks_per_min",
+    "cycle": 1,
+    "formula": "away_attacks/max(snapshot_minute,1)",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_away_corners_per_min",
+    "cycle": 1,
+    "formula": "away_corners/max(snapshot_minute,1)",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_away_shot_accuracy",
+    "cycle": 1,
+    "formula": "away_shots_on_target/(away_shots_total+1)",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_away_pressure",
+    "cycle": 1,
+    "formula": "0.5*away_shots_on_target+0.03*away_dangerous_attacks+0.12*away_corners",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_away_attack_efficiency",
+    "cycle": 1,
+    "formula": "away_shots_on_target/(away_dangerous_attacks+1)",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_shots_total_share_home",
+    "cycle": 1,
+    "formula": "home_shots_total/(home_shots_total+away_shots_total+1)",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_shots_on_target_share_home",
+    "cycle": 1,
+    "formula": "home_shots_on_target/(home_shots_on_target+away_shots_on_target+1)",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_dangerous_attacks_share_home",
+    "cycle": 1,
+    "formula": "home_dangerous_attacks/(home_dangerous_attacks+away_dangerous_attacks+1)",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_attacks_share_home",
+    "cycle": 1,
+    "formula": "home_attacks/(home_attacks+away_attacks+1)",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_corners_share_home",
+    "cycle": 1,
+    "formula": "home_corners/(home_corners+away_corners+1)",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_shots_insidebox_share_home",
+    "cycle": 1,
+    "formula": "home_shots_insidebox/(home_shots_insidebox+away_shots_insidebox+1)",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_shot_accuracy_diff",
+    "cycle": 1,
+    "formula": "eng_home_shot_accuracy-eng_away_shot_accuracy",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_pressure_diff",
+    "cycle": 1,
+    "formula": "eng_home_pressure-eng_away_pressure",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_attack_efficiency_diff",
+    "cycle": 1,
+    "formula": "eng_home_attack_efficiency-eng_away_attack_efficiency",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_points_per_game_diff",
+    "cycle": 1,
+    "formula": "points_per_game_home-points_per_game_away",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_goals_for_per_game_diff",
+    "cycle": 1,
+    "formula": "goals_for_per_game_home-goals_for_per_game_away",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_goals_against_per_game_diff",
+    "cycle": 1,
+    "formula": "goals_against_per_game_home-goals_against_per_game_away",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_win_rate_diff",
+    "cycle": 1,
+    "formula": "win_rate_home-win_rate_away",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_remaining_95",
+    "cycle": 1,
+    "formula": "max(95-snapshot_minute,0); exposure proxy, not known FT minute",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_remaining_100",
+    "cycle": 1,
+    "formula": "max(100-snapshot_minute,0); exposure proxy",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_h2h_home_goal_share",
+    "cycle": 1,
+    "formula": "h2h_home_goals/(h2h_home_goals+h2h_away_goals+1)",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_trailing_shots_total",
+    "cycle": 1,
+    "formula": "shots_total of currently trailing team",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_trailing_advantage_shots_total",
+    "cycle": 1,
+    "formula": "trailing shots_total minus leading shots_total",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_trailing_shots_on_target",
+    "cycle": 1,
+    "formula": "shots_on_target of currently trailing team",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_trailing_advantage_shots_on_target",
+    "cycle": 1,
+    "formula": "trailing shots_on_target minus leading shots_on_target",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_trailing_shots_insidebox",
+    "cycle": 1,
+    "formula": "shots_insidebox of currently trailing team",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_trailing_advantage_shots_insidebox",
+    "cycle": 1,
+    "formula": "trailing shots_insidebox minus leading shots_insidebox",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_trailing_dangerous_attacks",
+    "cycle": 1,
+    "formula": "dangerous_attacks of currently trailing team",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_trailing_advantage_dangerous_attacks",
+    "cycle": 1,
+    "formula": "trailing dangerous_attacks minus leading dangerous_attacks",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_trailing_attacks",
+    "cycle": 1,
+    "formula": "attacks of currently trailing team",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_trailing_advantage_attacks",
+    "cycle": 1,
+    "formula": "trailing attacks minus leading attacks",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_trailing_corners",
+    "cycle": 1,
+    "formula": "corners of currently trailing team",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_trailing_advantage_corners",
+    "cycle": 1,
+    "formula": "trailing corners minus leading corners",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_trailing_possession",
+    "cycle": 1,
+    "formula": "possession of currently trailing team",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_trailing_advantage_possession",
+    "cycle": 1,
+    "formula": "trailing possession minus leading possession",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_trailing_big_chances_created",
+    "cycle": 1,
+    "formula": "big_chances_created of currently trailing team",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_trailing_advantage_big_chances_created",
+    "cycle": 1,
+    "formula": "trailing big_chances_created minus leading big_chances_created",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_trailing_big_chances_missed",
+    "cycle": 1,
+    "formula": "big_chances_missed of currently trailing team",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_trailing_advantage_big_chances_missed",
+    "cycle": 1,
+    "formula": "trailing big_chances_missed minus leading big_chances_missed",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_trailing_red_cards",
+    "cycle": 1,
+    "formula": "red_cards of currently trailing team",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_trailing_advantage_red_cards",
+    "cycle": 1,
+    "formula": "trailing red_cards minus leading red_cards",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_trailing_pressure",
+    "cycle": 1,
+    "formula": "pressure of trailing team",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_trailing_strength",
+    "cycle": 1,
+    "formula": "PPG trailing minus leading",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_h2h_draw_smoothed",
+    "cycle": 1,
+    "formula": "(h2h_draw+1)/(h2h_total_matches+3)",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_home_shots_total_acceleration",
+    "cycle": 2,
+    "formula": "2*home_shots_total_last_5m-home_shots_total_last_10m",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_home_shots_total_recent_vs_match",
+    "cycle": 2,
+    "formula": "home_shots_total_last_10m/10-home_shots_total/snapshot_minute",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_home_shots_on_target_acceleration",
+    "cycle": 2,
+    "formula": "2*home_shots_on_target_last_5m-home_shots_on_target_last_10m",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_home_shots_on_target_recent_vs_match",
+    "cycle": 2,
+    "formula": "home_shots_on_target_last_10m/10-home_shots_on_target/snapshot_minute",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_home_shots_insidebox_acceleration",
+    "cycle": 2,
+    "formula": "2*home_shots_insidebox_last_5m-home_shots_insidebox_last_10m",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_home_shots_insidebox_recent_vs_match",
+    "cycle": 2,
+    "formula": "home_shots_insidebox_last_10m/10-home_shots_insidebox/snapshot_minute",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_home_dangerous_attacks_acceleration",
+    "cycle": 2,
+    "formula": "2*home_dangerous_attacks_last_5m-home_dangerous_attacks_last_10m",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_home_dangerous_attacks_recent_vs_match",
+    "cycle": 2,
+    "formula": "home_dangerous_attacks_last_10m/10-home_dangerous_attacks/snapshot_minute",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_home_corners_acceleration",
+    "cycle": 2,
+    "formula": "2*home_corners_last_5m-home_corners_last_10m",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_home_corners_recent_vs_match",
+    "cycle": 2,
+    "formula": "home_corners_last_10m/10-home_corners/snapshot_minute",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_home_pressure_5m",
+    "cycle": 2,
+    "formula": "0.5*SOT_last_5m+0.03*dangerous_attacks_last_5m+0.12*corners_last_5m (home)",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_home_pressure_10m",
+    "cycle": 2,
+    "formula": "0.5*SOT_last_10m+0.03*dangerous_attacks_last_10m+0.12*corners_last_10m (home)",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_home_box_quality_10m",
+    "cycle": 2,
+    "formula": "home_shots_insidebox_last_10m/(home_shots_total_last_10m+1)",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_away_shots_total_acceleration",
+    "cycle": 2,
+    "formula": "2*away_shots_total_last_5m-away_shots_total_last_10m",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_away_shots_total_recent_vs_match",
+    "cycle": 2,
+    "formula": "away_shots_total_last_10m/10-away_shots_total/snapshot_minute",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_away_shots_on_target_acceleration",
+    "cycle": 2,
+    "formula": "2*away_shots_on_target_last_5m-away_shots_on_target_last_10m",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_away_shots_on_target_recent_vs_match",
+    "cycle": 2,
+    "formula": "away_shots_on_target_last_10m/10-away_shots_on_target/snapshot_minute",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_away_shots_insidebox_acceleration",
+    "cycle": 2,
+    "formula": "2*away_shots_insidebox_last_5m-away_shots_insidebox_last_10m",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_away_shots_insidebox_recent_vs_match",
+    "cycle": 2,
+    "formula": "away_shots_insidebox_last_10m/10-away_shots_insidebox/snapshot_minute",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_away_dangerous_attacks_acceleration",
+    "cycle": 2,
+    "formula": "2*away_dangerous_attacks_last_5m-away_dangerous_attacks_last_10m",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_away_dangerous_attacks_recent_vs_match",
+    "cycle": 2,
+    "formula": "away_dangerous_attacks_last_10m/10-away_dangerous_attacks/snapshot_minute",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_away_corners_acceleration",
+    "cycle": 2,
+    "formula": "2*away_corners_last_5m-away_corners_last_10m",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_away_corners_recent_vs_match",
+    "cycle": 2,
+    "formula": "away_corners_last_10m/10-away_corners/snapshot_minute",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_away_pressure_5m",
+    "cycle": 2,
+    "formula": "0.5*SOT_last_5m+0.03*dangerous_attacks_last_5m+0.12*corners_last_5m (away)",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_away_pressure_10m",
+    "cycle": 2,
+    "formula": "0.5*SOT_last_10m+0.03*dangerous_attacks_last_10m+0.12*corners_last_10m (away)",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_away_box_quality_10m",
+    "cycle": 2,
+    "formula": "away_shots_insidebox_last_10m/(away_shots_total_last_10m+1)",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_pressure_diff_5m",
+    "cycle": 2,
+    "formula": "eng_home_pressure_5m-eng_away_pressure_5m",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_sot_share_home_5m",
+    "cycle": 2,
+    "formula": "home_SOT_last_5m/(home_SOT_last_5m+away_SOT_last_5m+1)",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_pressure_diff_10m",
+    "cycle": 2,
+    "formula": "eng_home_pressure_10m-eng_away_pressure_10m",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_sot_share_home_10m",
+    "cycle": 2,
+    "formula": "home_SOT_last_10m/(home_SOT_last_10m+away_SOT_last_10m+1)",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_trailing_shots_total_5m",
+    "cycle": 2,
+    "formula": "trailing shots_total last 5m",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_trailing_advantage_shots_total_5m",
+    "cycle": 2,
+    "formula": "trailing minus leading shots_total last 5m",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_trailing_shots_total_10m",
+    "cycle": 2,
+    "formula": "trailing shots_total last 10m",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_trailing_advantage_shots_total_10m",
+    "cycle": 2,
+    "formula": "trailing minus leading shots_total last 10m",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_trailing_shots_total_acceleration",
+    "cycle": 2,
+    "formula": "trailing acceleration shots_total",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_trailing_shots_on_target_5m",
+    "cycle": 2,
+    "formula": "trailing shots_on_target last 5m",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_trailing_advantage_shots_on_target_5m",
+    "cycle": 2,
+    "formula": "trailing minus leading shots_on_target last 5m",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_trailing_shots_on_target_10m",
+    "cycle": 2,
+    "formula": "trailing shots_on_target last 10m",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_trailing_advantage_shots_on_target_10m",
+    "cycle": 2,
+    "formula": "trailing minus leading shots_on_target last 10m",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_trailing_shots_on_target_acceleration",
+    "cycle": 2,
+    "formula": "trailing acceleration shots_on_target",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_trailing_shots_insidebox_5m",
+    "cycle": 2,
+    "formula": "trailing shots_insidebox last 5m",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_trailing_advantage_shots_insidebox_5m",
+    "cycle": 2,
+    "formula": "trailing minus leading shots_insidebox last 5m",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_trailing_shots_insidebox_10m",
+    "cycle": 2,
+    "formula": "trailing shots_insidebox last 10m",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_trailing_advantage_shots_insidebox_10m",
+    "cycle": 2,
+    "formula": "trailing minus leading shots_insidebox last 10m",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_trailing_shots_insidebox_acceleration",
+    "cycle": 2,
+    "formula": "trailing acceleration shots_insidebox",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_trailing_dangerous_attacks_5m",
+    "cycle": 2,
+    "formula": "trailing dangerous_attacks last 5m",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_trailing_advantage_dangerous_attacks_5m",
+    "cycle": 2,
+    "formula": "trailing minus leading dangerous_attacks last 5m",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_trailing_dangerous_attacks_10m",
+    "cycle": 2,
+    "formula": "trailing dangerous_attacks last 10m",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_trailing_advantage_dangerous_attacks_10m",
+    "cycle": 2,
+    "formula": "trailing minus leading dangerous_attacks last 10m",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_trailing_dangerous_attacks_acceleration",
+    "cycle": 2,
+    "formula": "trailing acceleration dangerous_attacks",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_trailing_corners_5m",
+    "cycle": 2,
+    "formula": "trailing corners last 5m",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_trailing_advantage_corners_5m",
+    "cycle": 2,
+    "formula": "trailing minus leading corners last 5m",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_trailing_corners_10m",
+    "cycle": 2,
+    "formula": "trailing corners last 10m",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_trailing_advantage_corners_10m",
+    "cycle": 2,
+    "formula": "trailing minus leading corners last 10m",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_trailing_corners_acceleration",
+    "cycle": 2,
+    "formula": "trailing acceleration corners",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_trailing_pressure_10m",
+    "cycle": 2,
+    "formula": "pressure trailing last10m",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_leading_pressure_10m",
+    "cycle": 2,
+    "formula": "pressure leading last10m",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_home_pressure_exposure",
+    "cycle": 3,
+    "formula": "eng_home_pressure_10m*eng_remaining_95/10",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_home_losing_pressure",
+    "cycle": 3,
+    "formula": "eng_home_pressure_10m*is_home_losing",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_home_draw_pressure",
+    "cycle": 3,
+    "formula": "eng_home_pressure_10m*is_draw_now",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_home_threat",
+    "cycle": 3,
+    "formula": "home_shots_insidebox+0.7*home_shots_on_target+0.5*home_big_chances_created",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_home_unconverted_chances",
+    "cycle": 3,
+    "formula": "home_big_chances_created-home_score",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_away_pressure_exposure",
+    "cycle": 3,
+    "formula": "eng_away_pressure_10m*eng_remaining_95/10",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_away_losing_pressure",
+    "cycle": 3,
+    "formula": "eng_away_pressure_10m*is_away_losing",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_away_draw_pressure",
+    "cycle": 3,
+    "formula": "eng_away_pressure_10m*is_draw_now",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_away_threat",
+    "cycle": 3,
+    "formula": "away_shots_insidebox+0.7*away_shots_on_target+0.5*away_big_chances_created",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_away_unconverted_chances",
+    "cycle": 3,
+    "formula": "away_big_chances_created-away_score",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_pressure_home_competing",
+    "cycle": 3,
+    "formula": "home_pressure_10m/(home_pressure_10m+away_pressure_10m+1)",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_threat_diff",
+    "cycle": 3,
+    "formula": "eng_home_threat-eng_away_threat",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_attack_vs_defence_home",
+    "cycle": 3,
+    "formula": "goals_for_per_game_home*goals_against_per_game_away",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_attack_vs_defence_away",
+    "cycle": 3,
+    "formula": "goals_for_per_game_away*goals_against_per_game_home",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_red_advantage_home",
+    "cycle": 3,
+    "formula": "away_red_cards-home_red_cards; NULL is not zero",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_substitution_diff_10m",
+    "cycle": 3,
+    "formula": "home_substitutions_last_10m-away_substitutions_last_10m",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_trailing_exposure",
+    "cycle": 3,
+    "formula": "trailing pressure * known remaining minutes or fixed95 proxy /10",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_leading_exposure",
+    "cycle": 3,
+    "formula": "leading pressure * remaining /10",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_competing_pressure",
+    "cycle": 3,
+    "formula": "trailing pressure/(leading pressure+1)",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_equalization_hazard_proxy",
+    "cycle": 3,
+    "formula": "1-exp(-trailing pressure*remaining/100); fixed proxy, not fitted probability",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_trailing_attack_vs_defence",
+    "cycle": 3,
+    "formula": "trailing goals-for rate * leading goals-against rate",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_trailing_red_disadvantage",
+    "cycle": 3,
+    "formula": "red cards trailing minus leading",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_trailing_sot_share_10m",
+    "cycle": 3,
+    "formula": "trailing SOT10/(total SOT10+1)",
+    "null_policy": "propagate source null; impute inside train fold"
+  },
+  {
+    "feature": "eng_draw_risk_balance",
+    "cycle": 3,
+    "formula": "trailing pressure minus leading exposure/20",
+    "null_policy": "propagate source null; impute inside train fold"
+  }
+]

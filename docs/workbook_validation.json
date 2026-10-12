@@ -1,0 +1,30 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "check": "saved_precision_matches_metrics",
+      "pass": true
+    },
+    {
+      "check": "saved_formula_result_no",
+      "pass": true
+    },
+    {
+      "check": "strict_gate_boundary_no",
+      "pass": true
+    },
+    {
+      "check": "gate_formula_recalculates_yes",
+      "pass": true
+    },
+    {
+      "check": "restored_original_result",
+      "pass": true
+    },
+    {
+      "check": "chart_bindings_present",
+      "pass": true
+    }
+  ],
+  "engine": "artifact-tool; disposable import, exported file unchanged"
+}
