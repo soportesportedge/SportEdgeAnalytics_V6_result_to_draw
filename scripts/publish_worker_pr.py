@@ -9,7 +9,7 @@ HEAD='codex/result-to-draw-worker'
 
 def main():
     env=dict(os.environ);env['GIT_TERMINAL_PROMPT']='0'
-    credential=subprocess.run(['git','-c','credential.interactive=false','credential','fill'],
+    credential=subprocess.run(['git','-c','safe.directory='+ROOT.as_posix(),'-c','credential.interactive=false','credential','fill'],
       input='protocol=https\nhost=github.com\n\n',text=True,capture_output=True,env=env,check=True)
     values=dict(line.split('=',1) for line in credential.stdout.splitlines() if '=' in line)
     password=values.get('password')
